@@ -1,9 +1,21 @@
+if(navigator.serviceWorker){
+    navigator.serviceWorker.register("/sw.js");
+}
+
 window.mostrarPersonaje = function(){
     let molde = document.querySelector('.molde-info-personaje').cloneNode(true);
     let personaje = this.personaje;
     molde.querySelector('.personaje-nombre').innerText = personaje.name;
     molde.querySelector('.personaje-ocupacion').innerText = personaje.occupation;
-    molde.querySelector('.icono-estado').innerText = personaje.status;
+
+    const icono = molde.querySelector('.icono-estado');
+    if(personaje.status == "Deceased"){
+        icono.classList.add("fas", "fa-skull-crossbones", "text-danger")
+    }else if(personaje.status == "Alive"){
+        icono.classList.add("fab", "fa-creative-commons-sampling-plus", "text-success")
+    }else if(personaje.status == "Presumed dead"){
+        icono.classList.add("far", "fa-question-circle", "text-primary")
+    }
     molde.querySelector('.personaje-apodo').innerText = personaje.nickname;
     molde.querySelector('.personaje-actor').innerText = personaje.portrayed;
     molde.querySelector('.personaje-imagen').src = personaje.img;
