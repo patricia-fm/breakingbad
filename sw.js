@@ -1,7 +1,7 @@
 const APP_SHELL = [
     "/",
     "/index.html",
-    "/vendor\fontawesome-free-5.15.1-web\fontawesome-free-5.15.1-web/css/all.min.css",
+    "/vendor/fontawesome-free-5.15.1-web/fontawesome-free-5.15.1-web/css/all.min.css",
     "/css/style.css",
     "/img/breaking bad.png",
     "/js/init.js"
@@ -30,10 +30,34 @@ self.addEventListener('install', e=>{
     console.log("El service worker fue instalado");
 });
 
-self.addEventListener('activate', e=> {
+self.addEventListener('activate', e=>{
     console.log("El service worker fue activado");
 });
 
-self.addEventListener('fetch', e=> {
-    console.log(e);
+self.addEventListener('fetch', e=>{
+    const respuesta = caches.match(e.request).then(res=>{
+        if(res && !e.request.url.includes("/api")){
+            return res;
+
+        } else {
+            const petInternet = fetch(e.request).then(newRes=>{
+                if(newRes.ok || newRes.type =='opaque'){
+                    return caches.open("dinamico-v1").then(cache=>{
+                        cache.put(e.request, newRes.clone());
+                        return newRes.clone();
+                    });
+                
+                } else {
+                    console.log(newRes);
+                    return newRes;
+                }
+
+            }).catch(error=>caches.match(e.request));
+            return petInternet;
+
+        }
+
+    });
+
+    e.respondWith(respuesta);
 });
