@@ -1,17 +1,17 @@
 const APP_SHELL = [
-    "/",
-    "/index.html",
-    "/vendor/fontawesome-free-5.15.1-web/fontawesome-free-5.15.1-web/css/all.min.css",
-    "/css/style.css",
-    "/img/breaking bad.png",
-    "/js/init.js"
+    //"/",
+    "index.html",
+    "vendor/fontawesome-free-5.15.1-web/fontawesome-free-5.15.1-web/css/all.min.css",
+    "css/style.css",
+    "img/breaking bad.png",
+    "js/init.js"
 ];
 
 const APP_SHELL_INMUTABLE = [
-    "/https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css",
-    "/https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js",
-    "/https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",
-    "/https://cdn.jsdelivr.net/npm/sweetalert2@10"
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css",
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js",
+    "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js",
+    "https://cdn.jsdelivr.net/npm/sweetalert2@10"
 
 ];
 

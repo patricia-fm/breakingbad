@@ -1,5 +1,10 @@
 if(navigator.serviceWorker){
-    navigator.serviceWorker.register("/sw.js");
+    if(window.location.href.includes("localhost") || window.location.href.includes("127.0.0.1")){
+        navigator.serviceWorker.register("/sw.js");
+    } else {
+        navigator.serviceWorker.register("/breakingbad/sw.js");
+    }
+    
 }
 
 window.mostrarPersonaje = function(){
